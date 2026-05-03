@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Pipeline Monitor"
+version = "1.0.0"
+id = "artifacts/monitor"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 25796
+
+[services.development]
+run = "pnpm --filter @workspace/monitor run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/monitor", "run", "build" ]
+publicDir = "artifacts/monitor/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "25796"
+BASE_PATH = "/"
