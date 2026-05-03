@@ -12,6 +12,9 @@ const API_URL = process.env.VITE_API_URL || 'http://localhost:3000';
 app.use('/api', createProxyMiddleware({
   target: API_URL,
   changeOrigin: true,
+  pathRewrite: {
+    '^/api': '/api', // Keep /api prefix
+  },
 }));
 
 // Serve static files
