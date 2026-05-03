@@ -12,7 +12,19 @@ import {
   SidebarGroupContent,
 } from "@/components/ui/sidebar";
 import { Activity, Database, AlertCircle, BarChart3, Users, Layers } from "lucide-react";
-import { useHealthCheck, getHealthCheckQueryKey } from "@workspace/api-client-react";
+import { useQuery } from "@tanstack/react-query";
+
+function useHealthCheck() {
+  return useQuery({
+    queryKey: ["health"],
+    queryFn: () => fetch("/api/health").then(r => r.json()),
+    refetchInterval: 30000,
+  });
+}
+
+function getHealthCheckQueryKey() {
+  return ["health"];
+}
 
 const COMPETITORS = [
   { name: "HireVue", slug: "hirevue" },
@@ -25,12 +37,7 @@ const COMPETITORS = [
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
 
-  const { data: health } = useHealthCheck({
-    query: {
-      queryKey: getHealthCheckQueryKey(),
-      refetchInterval: 30000,
-    }
-  });
+  const { data: health } = useHealthCheck();
 
   return (
     <SidebarProvider>
