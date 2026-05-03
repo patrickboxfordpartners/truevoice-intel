@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ["bun"]
+
+[phases.install]
+cmds = ["bun install --frozen-lockfile"]
+
+[phases.build]
+cmds = ["bun run build --workspace=@workspace/api-server"]
+
+[start]
+cmd = "bun run start --workspace=@workspace/api-server"
