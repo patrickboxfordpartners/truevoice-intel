@@ -10,6 +10,12 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$SCRIPT_DIR"
 
+echo "=== Installing Python dependencies ==="
+python3 -m pip install --quiet --break-system-packages -r requirements.txt 2>&1 || \
+  pip3 install --quiet --break-system-packages -r requirements.txt 2>&1 || \
+  pip install --quiet -r requirements.txt 2>&1
+echo "✓ Dependencies ready"
+
 mkdir -p data
 
 PASS=0
