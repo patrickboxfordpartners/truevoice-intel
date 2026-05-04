@@ -77,7 +77,7 @@ Output a JSON object ONLY (no explanation) with these exact keys:
 
     try:
         resp = client.messages.create(
-            model="claude-3-5-haiku-20241022",
+            model="claude-haiku-4-5-20251001",
             max_tokens=512,
             messages=[{"role": "user", "content": prompt}],
         )
@@ -116,7 +116,7 @@ Output JSON ONLY:
 
     try:
         resp = client.messages.create(
-            model="claude-3-5-sonnet-20241022",
+            model="claude-sonnet-4-6",
             max_tokens=1024,
             messages=[{"role": "user", "content": prompt}],
         )
@@ -155,7 +155,7 @@ Angles {competitor} is missing that TrueVoice can own.
 
     try:
         resp = client.messages.create(
-            model="claude-3-5-sonnet-20241022",
+            model="claude-sonnet-4-6",
             max_tokens=2048,
             messages=[{"role": "user", "content": prompt}],
         )
