@@ -8,11 +8,11 @@ const app = express();
 const PORT = process.env.PORT || 5173;
 const API_URL = process.env.VITE_API_URL || 'http://localhost:3000';
 
-// Proxy API requests — mount on /api and rewrite so /api prefix is preserved
-app.use('/api', createProxyMiddleware({
+// Proxy /api/* to the backend using filter so Express does not strip the prefix
+app.use(createProxyMiddleware({
+  pathFilter: '/api',
   target: API_URL,
   changeOrigin: true,
-  pathRewrite: (path) => '/api' + path,
 }));
 
 // Serve static files
