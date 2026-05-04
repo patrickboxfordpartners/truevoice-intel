@@ -2,7 +2,7 @@
 # TrueVoice Intel — scraper pipeline
 # Runs all scrapers then the Claude analysis pipeline.
 # Env vars used (set in Replit Secrets):
-#   APIFY_API_KEY          — required for G2 + Capterra
+#   APIFY_API_TOKEN          — required for G2 + Capterra
 #   ANTHROPIC_API_KEY      — required for AI analysis
 #   TWITTER_BEARER_TOKEN   — optional (Twitter/X scraper)
 #   PRODUCTHUNT_API_KEY    — optional (ProductHunt scraper)

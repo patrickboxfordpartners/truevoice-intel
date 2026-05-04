@@ -1,6 +1,6 @@
 """
 Capterra Reviews Scraper — powered by Apify (hello.datawizards/Capterra-Company-Reviews)
-Requires: APIFY_API_KEY
+Requires: APIFY_API_TOKEN
 Run: python3 capterra_scraper.py
 
 Confirmed field names from live test:
@@ -59,9 +59,9 @@ def normalize(item: dict, competitor: dict) -> dict:
 
 
 def scrape_capterra(competitor: dict) -> list:
-    api_key = os.environ.get("APIFY_API_KEY")
+    api_key = os.environ.get("APIFY_API_TOKEN")
     if not api_key:
-        logger.error("APIFY_API_KEY not set — skipping Capterra for %s", competitor["name"])
+        logger.error("APIFY_API_TOKEN not set — skipping Capterra for %s", competitor["name"])
         return []
 
     client = ApifyClient(api_key)

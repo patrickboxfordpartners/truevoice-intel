@@ -1,6 +1,6 @@
 """
 Reddit Scraper — powered by Apify (trudax/reddit-scraper-lite)
-Requires: APIFY_API_KEY
+Requires: APIFY_API_TOKEN
 Run: python3 reddit_scraper.py
 
 Confirmed field names from live test:
@@ -51,9 +51,9 @@ def normalize(item: dict, competitor: dict, search_term: str) -> dict:
 
 
 def scrape_reddit(competitor: dict) -> list:
-    api_key = os.environ.get("APIFY_API_KEY")
+    api_key = os.environ.get("APIFY_API_TOKEN")
     if not api_key:
-        logger.error("APIFY_API_KEY not set — skipping Reddit for %s", competitor["name"])
+        logger.error("APIFY_API_TOKEN not set — skipping Reddit for %s", competitor["name"])
         return []
 
     client = ApifyClient(api_key)

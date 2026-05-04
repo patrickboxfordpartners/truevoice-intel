@@ -1,6 +1,6 @@
 """
 G2 Reviews Scraper — powered by Apify (magicfingers/g2-reviews-scraper)
-Requires: APIFY_API_KEY
+Requires: APIFY_API_TOKEN
 Run: python3 g2_scraper.py
 
 NOTE: G2 heavily rate-limits and blocks scrapers with Cloudflare. The Apify actor
@@ -66,9 +66,9 @@ def normalize(item: dict, competitor: dict) -> dict:
 
 
 def scrape_g2(competitor: dict) -> list:
-    api_key = os.environ.get("APIFY_API_KEY")
+    api_key = os.environ.get("APIFY_API_TOKEN")
     if not api_key:
-        logger.error("APIFY_API_KEY not set — skipping G2 for %s", competitor["name"])
+        logger.error("APIFY_API_TOKEN not set — skipping G2 for %s", competitor["name"])
         return []
 
     client = ApifyClient(api_key)
