@@ -8,11 +8,11 @@ const router = Router();
 
 const DATA_DIR = process.env.DATA_DIR
   ? path.resolve(process.env.DATA_DIR)
-  : path.resolve("../../scraper/data");
+  : path.resolve(__dirname, "../scraper/data");
 
 const SCRAPER_DIR = process.env.SCRAPER_DIR
   ? path.resolve(process.env.SCRAPER_DIR)
-  : path.resolve("../../scraper");
+  : path.resolve(__dirname, "../scraper");
 
 const SCHEDULE_FILE   = path.join(DATA_DIR, "_schedule.json");
 const NOTIFY_FILE     = path.join(DATA_DIR, "_notifications.json");
